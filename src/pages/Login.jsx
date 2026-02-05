@@ -8,6 +8,8 @@ import mascot1 from '../assets/mascot_1.png';
 import mascot3 from '../assets/mascot_3.png';
 import mascot4 from '../assets/mascot_4.png';
 import mascot5 from '../assets/mascot_5.png';
+import puchoLogo from '../assets/pucho_logo_login.png';
+
 
 
 // Floating Mascot Component (Individual Images)
@@ -150,8 +152,9 @@ const Login = () => {
 
             {/* Mobile Logo - Absolute Top Center */}
             <div className="absolute top-6 left-0 right-0 flex justify-center md:hidden z-20">
-                <img src="/src/assets/pucho_logo_login.png" alt="Pucho.ai" className="h-8" />
+                <img src={puchoLogo} alt="Pucho.ai" className="h-8" />
             </div>
+
 
             <div className="w-full max-w-7xl mx-auto grid md:grid-cols-2 gap-6 md:gap-12 lg:gap-24 relative z-10 items-center h-full md:h-auto content-center">
 
@@ -159,8 +162,9 @@ const Login = () => {
                 <div className="text-center md:text-left space-y-4 md:space-y-8 md:pl-8 lg:pl-16">
                     {/* Desktop/Tablet Logo */}
                     <div className="hidden md:flex justify-start mb-8 lg:mb-16">
-                        <img src="/src/assets/pucho_logo_login.png" alt="Pucho.ai" className="h-8 lg:h-12" />
+                        <img src={puchoLogo} alt="Pucho.ai" className="h-8 lg:h-12" />
                     </div>
+
 
                     <div className="space-y-2 md:space-y-4 lg:space-y-6">
                         <div className="space-y-1 md:space-y-2">
