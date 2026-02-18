@@ -838,8 +838,6 @@ export const AccountFlowProvider = ({ children }) => {
     }, [postedVouchers, addAuditLog]);
 
     const clearData = useCallback(async () => {
-        if (!window.confirm("Are you sure you want to clear ALL data from dashboard and cloud?")) return;
-
         try {
             // 1. Reset Supabase Dashboard Impact
             await supabase.from('dashboard_impact').update({
