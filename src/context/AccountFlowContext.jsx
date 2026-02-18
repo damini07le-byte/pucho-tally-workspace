@@ -454,7 +454,7 @@ export const AccountFlowProvider = ({ children }) => {
             const id = setTimeout(() => controller.abort(), 180000); // 3 minutes timeout
 
             console.log('Sending file to Webhook:', file.name);
-            const response = await fetch('https://studio.pucho.ai/api/v1/webhooks/mSqJ7cSkI1XAWguXgBYTp/sync', {
+            const response = await fetch('https://studio.pucho.ai/api/v1/webhooks/y5HLui37U5lOvEO46yWDm/sync', {
                 method: 'POST',
                 body: formData,
                 signal: controller.signal
