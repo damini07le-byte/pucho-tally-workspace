@@ -594,8 +594,7 @@ export const AccountFlowProvider = ({ children }) => {
                 };
 
                 setPendingVouchers(prev => [newVoucher, ...prev]);
-
-                // Sync to Supabase
+                setStatus('pending_review');
                 try {
                     await supabase.from('vouchers').insert([{
                         voucher_id: newVoucher.id,
