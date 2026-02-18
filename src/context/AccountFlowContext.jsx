@@ -545,7 +545,6 @@ export const AccountFlowProvider = ({ children }) => {
                     detected_type: 'Bank Statement',
                     summary: {
                         ...bankSummary,
-                        bank_transactions: transactions,
                         balance: finalExtractedBalance,
                         bank_name: bankSummary.bank_name || bankSummary.party || 'Bank Account',
                         account_number: bankSummary.account_number || '---'
@@ -581,16 +580,26 @@ export const AccountFlowProvider = ({ children }) => {
 
             } else {
                 console.log('Detected as VOUCHER data');
+                // Debugged Data Extraction logic
+                const summary = data.summary || {};
+                const extractedAmount = parseFloat(summary.grand_total || summary.total || summary.amount || summary.balance || 0);
+                const extractedDate = summary.date || new Date().toISOString().split('T')[0];
+
                 const newVoucher = {
-                    id: data.summary?.invoice_no || `PENDING_${Date.now()}`,
-                    timestamp: new Date().toISOString(),
+                    id: Date.now().toString(),
                     fileName: file.name,
-                    fileObject: file,
-                    fileData: fileData.length < 2000000 ? fileData : null,
-                    detected_type: data.detected_type || 'Manual',
-                    summary: data.summary || {},
-                    dashboard_impact: data.dashboard_impact || {},
-                    status: 'pending_review'
+                    fileData: fileData,
+                    type: data.detected_type || 'General',
+                    amount: extractedAmount,
+                    date: extractedDate,
+                    details: data,
+                    status: 'Pending Review',
+                    summary: {
+                        ...summary,
+                        grand_total: extractedAmount,
+                        date: extractedDate
+                    },
+                    timestamp: new Date().toISOString()
                 };
 
                 setPendingVouchers(prev => [newVoucher, ...prev]);
