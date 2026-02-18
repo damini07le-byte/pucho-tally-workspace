@@ -88,7 +88,7 @@ const Vouchers = () => {
                                     <p className="text-sm font-bold text-gray-900">
                                         {v.detected_type?.includes('Bank')
                                             ? (v.summary?.bank_name || v.summary?.party || 'Bank Statement')
-                                            : (v.summary?.party || v.summary?.buyer_name || 'N/A')}
+                                            : (v.summary?.party || v.summary?.buyer_name || v.fileName || 'N/A')}
                                     </p>
                                 </div>
                             </div>
