@@ -111,6 +111,15 @@ const Header = ({ onMenuClick }) => {
                     />
                 </div>
 
+                {/* Clear Button */}
+                <button
+                    onClick={clearData}
+                    className="p-2 md:p-2.5 text-red-600 bg-red-50 hover:bg-red-100 rounded-xl transition-all border border-red-200 shrink-0 mx-1"
+                    title="Clear All Data"
+                >
+                    <Trash2 size={18} />
+                </button>
+
                 <div className="hidden sm:flex items-center gap-3 pl-4 border-l border-gray-100">
                     <img src={BellIcon} alt="Notifications" className="w-5 h-5 opacity-40 cursor-pointer hover:opacity-100 transition-opacity" />
                     <span className="text-xs font-bold text-gray-400 uppercase tracking-widest hidden lg:block">CA Admin</span>

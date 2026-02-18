@@ -838,10 +838,33 @@ export const AccountFlowProvider = ({ children }) => {
         addAuditLog(`GSTR-3B Summary Exported`, 'Admin', 'action');
     }, [postedVouchers, addAuditLog]);
 
-    const clearData = useCallback(() => {
+    const clearData = useCallback(async () => {
+        if (!window.confirm("Are you sure you want to clear ALL data from dashboard and cloud?")) return;
+
+        try {
+            // 1. Reset Supabase Dashboard Impact
+            await supabase.from('dashboard_impact').update({
+                cash_balance: 0,
+                bank_balance: 0,
+                receivables: 0,
+                payables: 0,
+                gst_input: 0,
+                gst_output: 0
+            }).eq('id', 1);
+
+            // 2. Delete all vouchers from Supabase
+            // We use a filter that matches everything (neq to a non-existent value)
+            await supabase.from('vouchers').delete().neq('voucher_id', '___NON_EXISTENT___');
+
+            console.log("Cloud data successfully cleared");
+        } catch (e) {
+            console.warn('Failed to clear cloud data:', e);
+        }
+
+        // Local state reset
         setWebhookData(null);
         setStatus('idle');
-        setCurrentDoc(null); // Corrected from setVoucher(null)
+        setCurrentDoc(null);
         setUiVisibility({
             accounting_dashboard: true,
             sales_purchase_tab: true,
