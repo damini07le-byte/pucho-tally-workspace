@@ -4,7 +4,9 @@
 
 @layer base {
   body {
-    @apply bg-pucho-light text-pucho-dark font-sans antialiased;
+    background-color: #ffffff !important;
+    color: #111834 !important;
+    @apply font-sans antialiased;
   }
 }
 

@@ -1,17 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 export default {
     content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+    darkMode: 'class', // Disable automatic media-based dark mode
     theme: {
         extend: {
             fontFamily: {
-                sans: ['"Space Grotesk"', 'sans-serif'], // The Identity Font
+                sans: ['"Space Grotesk"', 'sans-serif'],
             },
             colors: {
                 pucho: {
-                    dark: '#111834',      // Primary Text / Sidebar Active
-                    purple: '#8b5cf6',    // Brand Accent / Hovers
-                    blue: '#3b82f6',      // Gradients
-                    light: '#f8f9fc',     // App Background
+                    dark: '#111834',
+                    purple: '#8b5cf6',
+                    blue: '#3b82f6',
+                    light: '#ffffff', // Forced Pure White
                 }
             },
             boxShadow: {
