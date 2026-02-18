@@ -10,12 +10,7 @@ const AdminDashboard = () => {
     return (
         <div className="flex h-screen bg-pucho-light overflow-hidden font-sans text-gray-900">
             {/* Mobile Sidebar Overlay */}
-            {isSidebarOpen && (
-                <div
-                    className="fixed inset-0 bg-black/40 backdrop-blur-[2px] z-20 lg:hidden"
-                    onClick={() => setIsSidebarOpen(false)}
-                />
-            )}
+            {/* Removed overlay to fix dimming issue */}
 
             {/* Sidebar: Responsive */}
             <div className="print:hidden">
